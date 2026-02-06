@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <button>Stop Change</button>
+    <script>
+      const body = document.body;
+      const button = document.querySelector("button");
+
+      const intervalId = setInterval(() => {
+        const red = Math.floor(Math.random() * 255);
+        const green = Math.floor(Math.random() * 255);
+        const blue = Math.floor(Math.random() * 255);
+
+        const rgb = `rgb(${red},${green},${blue})`;
+
+        body.style.background = rgb;
+      }, 1000);
+
+      button.addEventListener("click", () => {
+        clearInterval(intervalId);
+        button.textContent = body.style.background;
+      });
+    </script>
+  </body>
+</html>
